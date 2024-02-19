@@ -1,8 +1,7 @@
 import { json } from '@sveltejs/kit';
 
 export const POST = async ({ request, getClientAddress }) => {
-    console.log(new Date().toISOString());
-	const { redstone_power } = await request.json();
+    console.log("[" + new Date().toUTCString() + " | " + getClientAddress() + "] " + await request.text());
     
 	return json("thanks for post");
 };
