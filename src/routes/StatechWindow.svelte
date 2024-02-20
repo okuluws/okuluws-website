@@ -8,12 +8,12 @@
     let unsubscribe: () => void;
     onMount(async () => {
         unsubscribe = await pb.collection("global_data").subscribe("*", async ({ record }) => {
-            power = JSON.parse(record.data).power
+            power = JSON.parse(record.data).power;
         });
     });
 
     onDestroy(() => {
-        unsubscribe()
+        unsubscribe?.();
     });
 </script>
 <MyWindow display_text={"Statech"}>
