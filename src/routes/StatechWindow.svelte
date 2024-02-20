@@ -7,8 +7,10 @@
     let power: number;
     let unsubscribe: () => void;
     onMount(async () => {
-        unsubscribe = await pb.collection("global_data").subscribe("*", async ({ record }) => {
-            power = JSON.parse(record.data).power;
+        power = (await pb.collection("global_data").getOne("qkbqsqko22kaa3z")).data.power
+
+        unsubscribe = await pb.collection("global_data").subscribe("qkbqsqko22kaa3z", async ({ record }) => {
+            power = record.data.power;
         });
     });
 
