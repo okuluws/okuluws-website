@@ -6,7 +6,7 @@
     let post_body: string;
     let headers: string;
 </script>
-<MyWindow display_text={"API Test"}>
+<MyWindow width={400} height={150} display_text={"API Test"}>
     <input type="text" placeholder="Route" bind:value={route}>
     <input type="text" placeholder="Headers" bind:value={headers}>
     <br/>

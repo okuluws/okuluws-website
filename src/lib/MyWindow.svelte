@@ -4,10 +4,15 @@
     import SVG_normalize from "$lib/svg/plus-large-svgrepo-com.svelte";
 
     
-    export let left = 100;
-	export let top = 100;
+    export let left: number = 100;
+	export let top: number = 100;
+
+    export let width: number = 200;
+    export let height: number = 100;
+
+    export let auto_height: boolean = true;
 	
-	let moving = false;
+	let moving: boolean = false;
 	
     let last_touch_x: number;
     let last_touch_y: number;
@@ -51,8 +56,8 @@
 
 {#if display_state == "open" || display_state == "minimized"}
 <div class="absolute border" style="left: {left}px; top: {top}px;">
-    <div class="h-6 flex justify-between bg-gray-100">
-        <button class="h-full w-36 hover:bg-slate-300 select-none text-left grow overflow-hidden" on:mousedown={onMouseDown} on:touchstart={onTouchStart}>
+    <div class="h-6 flex bg-gray-100">
+        <button class="h-full hover:bg-slate-300 select-none text-left grow overflow-hidden" on:mousedown={onMouseDown} on:touchstart={onTouchStart}>
             {display_text}
         </button>
         <button class="h-full w-8 hover:bg-slate-300 flex justify-center items-center"  on:click={() => {display_state = "minimized"}}>
@@ -72,7 +77,7 @@
         </button>
     </div>
     {#if display_state == "open"}
-    <div class="bg-slate-50">
+    <div class="bg-slate-50" style="width: {width}px; {auto_height ? "" : `height: ${height}px`}">
         <slot/>
     </div>
     {/if}
