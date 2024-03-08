@@ -83,7 +83,7 @@
         </button>
     </div>
     {#if display_state == "open"}
-    <div class="bg-slate-50 text-start" style="width: {auto_width ? "" : `width: ${width}px`}; {auto_height ? "" : `height: ${height}px`}">
+    <div class="bg-slate-50 text-start" style="{auto_width ? "" : `width: ${width}px`}; {auto_height ? "" : `height: ${height}px`}">
         <slot/>
     </div>
     {/if}
