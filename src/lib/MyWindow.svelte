@@ -48,6 +48,10 @@
 		moving = false;
 	}
 
+    function onTouchEnd() {
+        moving = false;
+    }
+
 
     export let display_state: "open" | "minimized" | "closed" = "open";
     export let display_text: string = "Unnamed Window";
@@ -84,4 +88,4 @@
 </div>
 {/if}
 
-<svelte:window on:mouseup={onMouseUp} on:touchend={onMouseUp} on:mousemove={onMouseMove} on:touchmove={onTouchMove} />
+<svelte:window on:mouseup={onMouseUp} on:touchend={onTouchEnd} on:mousemove={onMouseMove} on:touchmove={onTouchMove} />
