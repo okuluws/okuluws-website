@@ -11,6 +11,7 @@
     export let height: number = 100;
 
     export let auto_height: boolean = true;
+    export let auto_size: boolean = true;
 	
 	let moving: boolean = false;
 	
@@ -52,6 +53,7 @@
         moving = false;
     }
 
+    let is_focused: boolean = false;
 
     export let display_state: "open" | "minimized" | "closed" = "open";
     export let display_text: string = "Unnamed Window";
@@ -59,33 +61,33 @@
 </script>
 
 {#if display_state == "open" || display_state == "minimized"}
-<div class="absolute border" style="left: {left}px; top: {top}px;">
+<button class="absolute border self-start" style="left: {left}px; top: {top}px; z-index: {is_focused ? "1" : "0"};" on:focusin={() => is_focused = true} on:focusout={() => is_focused = false}>
     <div class="h-6 flex bg-gray-100">
-        <button class="h-full hover:bg-slate-300 select-none text-left grow overflow-hidden" on:mousedown={onMouseDown} on:touchstart={onTouchStart}>
+        <button class="h-full px-1 hover:bg-slate-300 select-none text-left grow overflow-hidden" on:mousedown={onMouseDown} on:touchstart={onTouchStart}>
             {display_text}
         </button>
-        <button class="h-full w-8 hover:bg-slate-300 flex justify-center items-center"  on:click={() => {display_state = "minimized"}}>
+        <button class="h-full w-8 hover:bg-slate-300 flex justify-center items-center"  on:click={() => display_state = "minimized"}>
             <div class="w-5 h-5">
                 <SVG_minimize/>
             </div>
         </button>
-        <button class="h-full w-8 hover:bg-slate-300 flex justify-center items-center"  on:click={() => {display_state = "open"}}>
+        <button class="h-full w-8 hover:bg-slate-300 flex justify-center items-center"  on:click={() => display_state = "open"}>
             <div class="w-5 h-5">
                 <SVG_normalize/>
             </div>
         </button>
-        <button class="h-full w-8 hover:bg-slate-300 flex justify-center items-center" on:click={() => {display_state = "closed"}}>
+        <button class="h-full w-8 hover:bg-slate-300 flex justify-center items-center" on:click={() => display_state = "closed"}>
             <div class="w-4 h-4">
                 <SVG_close/>
             </div>
         </button>
     </div>
     {#if display_state == "open"}
-    <div class="bg-slate-50" style="width: {width}px; {auto_height ? "" : `height: ${height}px`}">
+    <div class="bg-slate-50 text-start" style="width: {width}px; {auto_height ? "" : `height: ${height}px`}">
         <slot/>
     </div>
     {/if}
-</div>
+</button>
 {/if}
 
-<svelte:window on:mouseup={onMouseUp} on:touchend={onTouchEnd} on:mousemove={onMouseMove} on:touchmove={onTouchMove} />
+<svelte:window on:mouseup={onMouseUp} on:touchend={onTouchEnd} on:mousemove={onMouseMove} on:touchmove={onTouchMove}/>
