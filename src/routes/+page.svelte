@@ -3,6 +3,7 @@
     import LoginWindow from "./LoginWindow.svelte";
     import RegisterWindow from "./RegisterWindow.svelte";
     import StatechWindow from "./StatechWindow.svelte";
+    import TicTacToeWindow from "./TicTacToeWindow.svelte";
 
 </script>
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl select-none">okuluws</div>
@@ -19,3 +20,4 @@
 <RegisterWindow/>
 <StatechWindow/>
 <ApiTestWindow/>
+<TicTacToeWindow/>
