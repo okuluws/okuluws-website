@@ -10,7 +10,7 @@
     }
 </script>
 
-<MyWindow display_text={"Register"}>
+<MyWindow auto_width={true} auto_height={true} display_text={"Register"}>
     [insert info]
     <br>
     <input placeholder="Username" type="text" bind:value={username}/>

@@ -14,7 +14,7 @@
     }
 </script>
 
-<MyWindow display_text={"Login"}>
+<MyWindow auto_width={true} auto_height={true} display_text={"Login"}>
     {#if $current_user}
         Currently logged in as {$current_user?.username}
         <button class="hover:bg-slate-300 underline text-xs" on:click={logout}>logout?</button> 

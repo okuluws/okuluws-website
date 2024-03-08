@@ -7,10 +7,11 @@
     export let left: number = 100;
 	export let top: number = 100;
 
-    export let width: number = 200;
-    export let height: number = 100;
+    export let width: number = 0;
+    export let height: number = 0;
 
-    export let auto_size: boolean = true;
+    export let auto_width: boolean = false;
+    export let auto_height: boolean = false;
 	
 	let moving: boolean = false;
 	
@@ -82,7 +83,7 @@
         </button>
     </div>
     {#if display_state == "open"}
-    <div class="bg-slate-50 text-start" style="width: {auto_size ? "" : `height: ${width}px`}; {auto_size ? "" : `height: ${height}px`}">
+    <div class="bg-slate-50 text-start" style="width: {auto_width ? "" : `height: ${width}px`}; {auto_height ? "" : `height: ${height}px`}">
         <slot/>
     </div>
     {/if}

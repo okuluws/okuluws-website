@@ -18,6 +18,6 @@
         unsubscribe?.();
     });
 </script>
-<MyWindow display_text={"Statech"}>
+<MyWindow auto_width={true} auto_height={true} display_text={"Statech"}>
     Current Power: {power}
 </MyWindow>
