@@ -61,7 +61,7 @@
 </script>
 
 {#if display_state == "open" || display_state == "minimized"}
-<button class="absolute border self-start cursor-auto select-text touch-none" style="left: {left}px; top: {top}px; z-index: {is_focused ? "1" : "0"};" on:focusin={() => is_focused = true} on:focusout={() => is_focused = false}>
+<button class="absolute border self-start cursor-auto select-text touch-none" style="left: {left}px; top: {top}px; z-index: {is_focused ? "1" : "0"};" on:touchstart={() => is_focused = true} on:focusin={() => is_focused = true} on:focusout={() => is_focused = false}>
     <div class="h-6 flex bg-gray-100">
         <button class="h-full px-1 hover:bg-slate-300 select-none text-left grow overflow-hidden" on:mousedown={onMouseDown} on:touchstart={onTouchStart}>
             {display_text}
