@@ -81,7 +81,7 @@
 </script>
 
 {#if display_state == "open" || display_state == "minimized"}
-<button class="absolute border self-start cursor-auto select-text touch-none" style="left: {left}px; top: {top}px; z-index: {z_index};" on:mousedown={move_z_index} on:touchstart={move_z_index}>
+<div class="absolute border self-start cursor-auto" role="button" tabindex="0" style="left: {left}px; top: {top}px; z-index: {z_index};" on:mousedown={move_z_index} on:touchstart={move_z_index}>
     <div class="h-6 flex bg-gray-100">
         <button class="h-full px-1 hover:bg-slate-300 select-none text-left grow overflow-hidden" on:mousedown={onMouseDown} on:touchstart={onTouchStart}>
             {display_text}
@@ -107,7 +107,7 @@
         <slot/>
     </div>
     {/if}
-</button>
+</div>
 {/if}
 
 <svelte:window on:mouseup={onMouseUp} on:touchend={onTouchEnd} on:mousemove={onMouseMove} on:touchmove={onTouchMove}/>
